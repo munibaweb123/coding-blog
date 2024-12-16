@@ -3,29 +3,33 @@
 import { cn } from "@/lib/utils";
 import React, { useEffect, useState } from "react";
 
-export const InfiniteMovingCards = ({
+interface Item {
+  quote: string;
+  name: string;
+  title: string;
+}
+
+interface InfiniteMovingCardsProps {
+  items: Item[];
+  direction?: "left" | "right";
+  speed?: "fast" | "normal" | "slow";
+  pauseOnHover?: boolean;
+  className?: string;
+}
+
+export const InfiniteMovingCards: React.FC<InfiniteMovingCardsProps> = ({
   items,
   direction = "left",
   speed = "fast",
   pauseOnHover = true,
   className,
-}: {
-  items: {
-    quote: string;
-    name: string;
-    title: string;
-  }[];
-  direction?: "left" | "right";
-  speed?: "fast" | "normal" | "slow";
-  pauseOnHover?: boolean;
-  className?: string;
 }) => {
   const containerRef = React.useRef<HTMLDivElement>(null);
   const scrollerRef = React.useRef<HTMLUListElement>(null);
 
   useEffect(() => {
     addAnimation();
-  }, []);
+  });
   const [start, setStart] = useState(false);
   function addAnimation() {
     if (containerRef.current && scrollerRef.current) {
@@ -85,7 +89,7 @@ export const InfiniteMovingCards = ({
           pauseOnHover && "hover:[animation-play-state:paused]"
         )}
       >
-        {items.map((item, idx) => (
+        {items.map((item) => (
           <li
             className="w-[350px] max-w-full relative rounded-2xl border border-b-0 flex-shrink-0 border-slate-700 px-8 py-6 md:w-[450px]"
             style={{
