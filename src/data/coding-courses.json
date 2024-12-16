@@ -1,0 +1,57 @@
+
+{
+    "courses": [
+      {
+        "id": 1,
+        "title": "Typescript Fundamentals",
+        "slug": "typescripts-fundamentals",
+        "description": "Learn the basics of typescript programming language with our comprehensive beginner's course.",
+        "price": 99.99,
+        "instructor": "John Doe",
+        "isFeatured": true,
+        "image": "/courses/typescript.jpg" 
+      },
+      {
+        "id": 2,
+        "title": "Nextjs for Beginners",
+        "slug": "nextjs-for-beginners",
+        "description": "Start your nextjs journey with foundational nextjs skills taught by expert instructors.",
+        "price": 109.99,
+        "instructor": "Jane Smith",
+        "isFeatured": false,
+        "image": "/courses/nextjs.jpg" 
+      },
+      {
+        "id": 3,
+        "title": "Generative AI",
+        "slug": "generative-ai",
+        "description": "Enhance your programming with generative artificial intelligence techniques for intermediate to advanced learners.",
+        "price": 119.99,
+        "instructor": "Emily Johnson",
+        "isFeatured": true,
+        "image": "/courses/genai.jpg" 
+      },
+      {
+        "id": 4,
+        "title": "AI Mastery",
+        "slug": "ai-mastery",
+        "description": "Master the artificial intelligence with our comprehensive course covering all skill levels.",
+        "price": 129.99,
+        "instructor": "Mike Brown",
+        "isFeatured": false,
+        "image": "/courses/ai.jpg"
+      },
+      {
+        "id": 5,
+        "title": "Python Basics",
+        "slug": "ai-mastery",
+        "description": "Learn python language with our comprehensive course covering all fundamentals of programming.",
+        "price": 99.99,
+        "instructor": "Tom Smith",
+        "isFeatured": true,
+        "image": "/courses/python.jpg"
+      }
+     
+    ]
+  }
+  
