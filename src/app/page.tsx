@@ -16,6 +16,7 @@ export default function Home() {
       <CodingTestimonial/>
       <UpcomingWebinars/>
       <Instructors/>
+     
     </main>
  
   );
