@@ -29,8 +29,8 @@ export const WavyBackground = ({
   const noise = createNoise3D();
   let w: number, h: number, nt: number, i: number, x: number;
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [animationId, setAnimationId] = useState<number | null>(null); // Make animationId nullable
-  let ctx: CanvasRenderingContext2D | null |undefined= null; // Correct type for ctx
+  const animationIdRef = useRef<number | null>(null); // Using a ref for the animationId
+  let ctx: CanvasRenderingContext2D | null | undefined = null; // Correct type for ctx
   let canvas: HTMLCanvasElement | null = null; // Correct type for canvas
 
   const getSpeed = () => {
@@ -98,7 +98,7 @@ export const WavyBackground = ({
       ctx.fillRect(0, 0, w, h);
       drawWave(5);
       if (ctx) {
-        setAnimationId(requestAnimationFrame(render)); // Use setState to store animationId
+        animationIdRef.current = requestAnimationFrame(render); // Store the animationId in the ref
       }
     }
   };
@@ -106,9 +106,9 @@ export const WavyBackground = ({
   useEffect(() => {
     init();
     return () => {
-      if (animationId) cancelAnimationFrame(animationId); // Use animationId correctly here
+      if (animationIdRef.current) cancelAnimationFrame(animationIdRef.current); // Cleanup with ref
     };
-  }, [animationId]); // Watch animationId for cleanup
+  }, []); // Empty dependency array to run once on mount
 
   const [isSafari, setIsSafari] = useState(false);
   useEffect(() => {

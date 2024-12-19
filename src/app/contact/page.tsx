@@ -1,11 +1,21 @@
 'use client';
 
-import React, { FormEvent, useState } from 'react';
+import React, { FormEvent, useEffect, useState } from 'react';
 import { Meteors } from '../components/ui/meteors';
 
 function MusicSchoolContactUs() {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
+
+  // Effect to handle the addition of dark mode class based on user's preference
+  useEffect(() => {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark'); // Add dark class if dark mode is preferred
+    } else {
+      document.documentElement.classList.remove('dark'); // Remove dark class if not
+    }
+  }, []);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -13,14 +23,12 @@ function MusicSchoolContactUs() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 dark:bg-gray-900 py-12 pt-36 relative">
-      {' '}
+    <div className="min-h-screen py-12 pt-36 relative">
       {/* Ensure the container is relative */}
       {/* BackgroundBeams with adjusted z-index */}
       <Meteors number={20} />
       {/* Content with higher z-index */}
       <div className="max-w-2xl mx-auto p-4 relative z-10">
-        {' '}
         {/* Add relative and z-10 to bring content to the front */}
         <h1 className="text-lg md:text-7xl text-center font-sans font-bold mb-8 text-white dark:text-black">
           Contact Us
